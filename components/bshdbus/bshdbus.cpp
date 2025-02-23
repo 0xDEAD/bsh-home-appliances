@@ -67,8 +67,8 @@ void BSHDBus::loop() {
 
     if ((framelen < BSHDBUS_MIN_FRAME_LENGTH) ||
             (framelen > BSHDBUS_MAX_FRAME_LENGTH) ||
-            (framelen > (this->buffer_.size() - p)) ||
-            crc16be(framedata, framelen, 0x0, 0x1021, false, false)) {
+            (framelen > (this->buffer_.size() - p))) {
+            //crc16be(framedata, framelen, 0x0, 0x1021, false, false)) {
       ESP_LOGV(TAG, "Ignoring byte at %d with value 0x%02X", p, framedata[0]);
       p++;
       continue;
